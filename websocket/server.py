@@ -8,7 +8,6 @@ from random import sample
 
 from flask import Flask, jsonify, request
 
-from websocket.problem import Problem
 
 app = Flask(__name__)
 
@@ -32,7 +31,7 @@ def get_work(amount):
     return jsonify([works[k] for k in sample(list(works.keys()), amount)])
 
 
-@app.route('/deco/api/update_work/<id>', methods=['POST'])
+@app.route('/deco/api/update-work/<id_work>', methods=['POST'])
 def publish_result(id_work):
     if not request.json or 'result' not in request.json:
         abort(400)
@@ -83,7 +82,7 @@ def publish_work():
 
 @app.route('/works')
 def see_works():
-    return jsonify({"works": works, "done": works_done})
+    return jsonify(list(works.values()))
 
 
 if __name__ == '__main__':

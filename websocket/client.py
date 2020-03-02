@@ -42,14 +42,15 @@ if __name__ == "__main__":
     print("Publish Work: ", publish_work())  # done
     print("Current Works: ", see_current_works())  # done
 
-    works = json.loads(get_work())
+    # works = json.loads(get_work())
+    # print("Work received: ", works)
+    #
+    # for w in works:
+    #     Problem.operate(w)
+    #
+    # print(works)
 
-    for w in works:
-        Problem.operate(w)
 
-    print(works)
-
-    print("Work received: ", works)
 
 
 
