@@ -33,8 +33,11 @@ def get_work(amount):
 
 @app.route('/deco/api/update-work/<id_work>', methods=['POST'])
 def publish_result(id_work):
-    if not request.json or 'result' not in request.json:
+    if not request.json:
         abort(400)
+
+    print("Received answer: ", id_work)
+    print(request.json)
 
     works[id_work]['result'] = request.json['result']
 
@@ -43,7 +46,7 @@ def publish_result(id_work):
 
     del works[id_work]
 
-    return jsonify({'reward': 50}), 201
+    return jsonify({'id': id_work, 'reward': 50}), 201
 
 
 default_m1 = [[1, 0], [0, 1]]
@@ -70,7 +73,11 @@ def publish_work():
     if not request.json:
         abort(400)
 
+    print("Received: ", request.json)
+
     data = json.loads(request.json)
+
+    print("Received: ", str(data))
 
     m1 = data.get('m1', default_m1)
     m2 = data.get('m2', default_m2)
@@ -86,4 +93,4 @@ def see_works():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, port=8080)
+    app.run(debug=False, port=8081)

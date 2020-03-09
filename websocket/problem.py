@@ -21,7 +21,7 @@ class Problem:
 
 class ThreadLauncher:
     """
-    Class that handles w<ith threads.
+    Class that handles with threads.
     """
     @staticmethod
     def launch_threads_and_wait(threads):
